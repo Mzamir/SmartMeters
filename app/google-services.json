@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "700883055358",
+    "firebase_url": "https://smartmeters-b63f1.firebaseio.com",
+    "project_id": "smartmeters-b63f1",
+    "storage_bucket": "smartmeters-b63f1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:700883055358:android:e49026c2edb321b3",
+        "android_client_info": {
+          "package_name": "com.zamir.smartmeters"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "700883055358-1so6vcqg8vbqare0o1ovb11ucc7v3rt4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBE1ANe8Y5LZ2ttD4JBehnSAKmxEOiOrRQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:700883055358:android:67ef5278542d03cb",
+        "android_client_info": {
+          "package_name": "zamir.com.smartmeters"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "700883055358-t2oic3m40pop2114bcdap1ii18b7jfo5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "zamir.com.smartmeters",
+            "certificate_hash": "B69393545BE39A97DD6C01EFBE10639EEBC210B4"
+          }
+        },
+        {
+          "client_id": "700883055358-1so6vcqg8vbqare0o1ovb11ucc7v3rt4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBE1ANe8Y5LZ2ttD4JBehnSAKmxEOiOrRQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "700883055358-1so6vcqg8vbqare0o1ovb11ucc7v3rt4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
