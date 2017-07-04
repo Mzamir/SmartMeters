@@ -7,9 +7,19 @@ package zamir.com.smartmeters.app;
 public class Config {
 
     //URL to our login.php file
-    public static final String LOGIN_URL = "http://192.168.1.6/SmartMetersAnalyticsData/login.php";
-    public static final String UPDATE_URL = "http://192.168.1.6/SmartMetersAnalyticsData/update_user.php";
+    public static final String LOGIN_URL = "http://192.168.1.19/SmartMetersAnalyticsData/login.php";
+    public static final String UPDATE_URL = "http://192.168.1.19/SmartMetersAnalyticsData/update_user.php";
+    public static final String GET_USER_CONSUMPTION_URL = "http://192.168.1.19/SmartMetersAnalyticsData/get_user_consumption.php";
 
+
+    // GET USER CONSUMPTION
+    public static final String KEY__BILL_apartment_code = "apartment_code";
+    public static final String KEY__BILL_apartment_bill = "apartment_bill";
+    public static final String KEY__BILL_total_consumption = "total_consumption";
+    public static final String KEY__BILL_most_used_devices = "most_used_devices";
+    public static final String KEY__BILL_Month = "bill_month";
+
+    // user
     public static final String KEY_EMAIL = "email";
     public static final String KEY_PASSWORD = "password";
     public static final String KEY_meterCode = "meterCode";
@@ -22,6 +32,7 @@ public class Config {
     public static final String KEY_updated_at = "updated_at";
     public static final String RESPONSE_SUCCESS = "success";
     public static final String RESPONSE_MESSAGE = "message";
+    public static final String RESPONSE_DATA = "data";
     public static final String SHARED_PREF_NAME = "user";
     public static final String FIRST_TIME_TO_LOGIN = "firstTime";
 

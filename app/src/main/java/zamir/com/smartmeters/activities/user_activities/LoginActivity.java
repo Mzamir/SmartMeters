@@ -44,6 +44,8 @@ import zamir.com.smartmeters.activities.MainActivity;
 import zamir.com.smartmeters.app.Config;
 import zamir.com.smartmeters.model.User;
 
+import static zamir.com.smartmeters.app.Config.RESPONSE_DATA;
+
 /**
  * Created by MahmoudSamir on 2/20/2017.
  */
@@ -133,7 +135,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(LoginActivity.this, jsonObject.getString(Config.RESPONSE_MESSAGE), Toast.LENGTH_SHORT).show();
                             } else if (state == 1) {
                                 Log.e("Login", "1");
-                                JSONArray jsonArray = jsonObject.getJSONArray("data");
+                                JSONArray jsonArray = jsonObject.getJSONArray(Config.RESPONSE_DATA);
                                 Log.e("ArrayJson", String.valueOf(jsonArray.length()));
                                 JSONObject currentUserObject = jsonArray.getJSONObject(0);
                                 Log.e("currentUserObject", currentUserObject.toString());

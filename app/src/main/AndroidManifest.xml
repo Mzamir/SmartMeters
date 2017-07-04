@@ -24,8 +24,9 @@
         <activity
             android:name=".activities.user_activities.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-
-        <activity android:name=".activities.NotificationActivity"></activity>
+        <activity
+            android:name=".activities.BillDetailsActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".activities.user_activities.ProfileActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>

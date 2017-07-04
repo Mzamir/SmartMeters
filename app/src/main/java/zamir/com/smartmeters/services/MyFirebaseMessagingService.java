@@ -7,7 +7,6 @@ import android.text.TextUtils;
 import android.util.Log;
 
 
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -18,9 +17,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import zamir.com.smartmeters.activities.MainActivity;
-import zamir.com.smartmeters.activities.NotificationActivity;
 import zamir.com.smartmeters.app.Config;
-import zamir.com.smartmeters.model.Notification;
+import zamir.com.smartmeters.model.BillItem;
 import zamir.com.smartmeters.utils.NotificationUtils;
 
 
@@ -43,7 +41,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         // Check if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
-            Log.e(TAG, "Notification Body: " + remoteMessage.getNotification().getBody());
+            Log.e(TAG, "BillItem Body: " + remoteMessage.getNotification().getBody());
             handleNotification(remoteMessage.getNotification().getBody());
         }
 
@@ -150,6 +148,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).push().getKey();
         DatabaseReference myRef = database.getReference(Config.SHARED_NOTIFICATIONS)
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(key);
-        myRef.setValue(new Notification(message));
+//        myRef.setValue(new BillItem(message));
     }
 }

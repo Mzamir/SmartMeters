@@ -5,9 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -31,10 +29,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.GetTokenResult;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 
@@ -48,9 +43,8 @@ import zamir.com.smartmeters.R;
 import zamir.com.smartmeters.activities.user_activities.LoginActivity;
 import zamir.com.smartmeters.activities.user_activities.ProfileActivity;
 import zamir.com.smartmeters.app.Config;
-import zamir.com.smartmeters.fragments.ConsumptionChartFragment;
 import zamir.com.smartmeters.fragments.HomeFragment;
-import zamir.com.smartmeters.fragments.NotificationFragment;
+import zamir.com.smartmeters.fragments.BillFragment;
 import zamir.com.smartmeters.fragments.ProfileFragment;
 import zamir.com.smartmeters.model.User;
 import zamir.com.smartmeters.utils.NotificationUtils;
@@ -62,7 +56,6 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private FirebaseAuth mAuth;
     Toolbar toolbar;
-    private int mNotificationsCount = 5;
     private static final String TAG = MainActivity.class.getSimpleName();
     private BroadcastReceiver mRegistrationBroadcastReceiver;
     private TextView userNmae, userEmail, notification;
@@ -91,22 +84,17 @@ public class MainActivity extends AppCompatActivity
             addRegistrationToken(email, registrationToken);
         }
 
-//        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new HomeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new HomeFragment()).commit();
         notification = (TextView) findViewById(R.id.notification);
         mRegistrationBroadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-
-                // checking for type intent filter
                 if (intent.getAction().equals(Config.REGISTRATION_COMPLETE)) {
-                    // gcm successfully registered
-                    // now subscribe to `global` topic to receive app wide notifications
                     FirebaseMessaging.getInstance().subscribeToTopic(Config.TOPIC_GLOBAL);
                 } else if (intent.getAction().equals(Config.PUSH_NOTIFICATION)) {
-                    // new push notification is received
                     String message = intent.getStringExtra("message");
+                    notification.setVisibility(View.VISIBLE);
                     notification.setText(message);
-//                    fillData(message);
                 }
             }
         };
@@ -139,9 +127,6 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        MenuItem item = menu.findItem(R.id.action_notifications);
-        LayerDrawable icon = (LayerDrawable) item.getIcon();
-        NotificationUtils.setBadgeCount(this, icon, mNotificationsCount);
         return true;
     }
 
@@ -151,14 +136,9 @@ public class MainActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_profile) {
-//            FirebaseAuth.getInstance().signOut();
             startActivity(new Intent(MainActivity.this, ProfileActivity.class));
-        } else if (id == R.id.action_notifications) {
-            Toast.makeText(this, "Notifications pressed", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(MainActivity.this, NotificationActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }
@@ -171,7 +151,6 @@ public class MainActivity extends AppCompatActivity
         String title = "Home";
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         if (id == R.id.nav_home) {
             title = "Home";
             fragment = new HomeFragment();
@@ -179,11 +158,8 @@ public class MainActivity extends AppCompatActivity
             title = "Profile";
             fragment = new ProfileFragment();
         } else if (id == R.id.nav_consumption) {
-            title = "Consumption";
-            fragment = new ConsumptionChartFragment();
-        } else if (id == R.id.nav_notification) {
-            title = "Notification";
-            fragment = new NotificationFragment();
+            title = "Bills";
+            fragment = new BillFragment();
         } else if (id == R.id.nav_signout) {
             signOut();
             return true;

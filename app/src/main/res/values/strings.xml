@@ -41,4 +41,9 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="add_device">Add</string>
     <string name="cancel_add_device">Cancel</string>
+
+    <!--Bill Fragment-->
+    <string name="bill_for">Bill for</string>
+    <string name="is">is</string>
+    <string name="LE">LE</string>
 </resources>

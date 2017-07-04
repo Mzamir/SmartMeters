@@ -36,8 +36,6 @@ import java.util.List;
 
 import zamir.com.smartmeters.R;
 import zamir.com.smartmeters.app.Config;
-import zamir.com.smartmeters.model.BadgeDrawable;
-import zamir.com.smartmeters.model.User;
 
 /**
  * Created by MahmoudSamir on 2/15/2017.
@@ -222,22 +220,22 @@ public class NotificationUtils {
         return 0;
     }
 
-    public static void setBadgeCount(Context context, LayerDrawable icon, int count) {
-
-        BadgeDrawable badge;
-
-        // Reuse drawable if possible
-        Drawable reuse = icon.findDrawableByLayerId(R.id.ic_badge);
-        if (reuse != null && reuse instanceof BadgeDrawable) {
-            badge = (BadgeDrawable) reuse;
-        } else {
-            badge = new BadgeDrawable(context);
-        }
-
-        badge.setCount(count);
-        icon.mutate();
-        icon.setDrawableByLayerId(R.id.ic_badge, badge);
-    }
+//    public static void setBadgeCount(Context context, LayerDrawable icon, int count) {
+//
+//        BadgeDrawable badge;
+//
+//        // Reuse drawable if possible
+//        Drawable reuse = icon.findDrawableByLayerId(R.id.ic_badge);
+//        if (reuse != null && reuse instanceof BadgeDrawable) {
+//            badge = (BadgeDrawable) reuse;
+//        } else {
+//            badge = new BadgeDrawable(context);
+//        }
+//
+//        badge.setCount(count);
+//        icon.mutate();
+//        icon.setDrawableByLayerId(R.id.ic_badge, badge);
+//    }
 
     private void setNotificationMessageToSharedPrefence(String message) {
         SharedPreferences pref = mContext.getSharedPreferences(Config.SHARED_NOTIFICATIONS, 0);
